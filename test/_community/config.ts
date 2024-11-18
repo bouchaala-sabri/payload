@@ -4,8 +4,10 @@ import path from 'path'
 
 import { buildConfigWithDefaults } from '../buildConfigWithDefaults.js'
 import { devUser } from '../credentials.js'
+import { IndustriesCollection } from './collections/Industries/index.js'
 import { MediaCollection } from './collections/Media/index.js'
-import { PostsCollection, postsSlug } from './collections/Posts/index.js'
+import { PostsCollection } from './collections/Posts/index.js'
+import { SegmentsCollection } from './collections/Segments/index.js'
 import { MenuGlobal } from './globals/Menu/index.js'
 
 const filename = fileURLToPath(import.meta.url)
@@ -13,7 +15,7 @@ const dirname = path.dirname(filename)
 
 export default buildConfigWithDefaults({
   // ...extend config here
-  collections: [PostsCollection, MediaCollection],
+  collections: [PostsCollection, MediaCollection, SegmentsCollection, IndustriesCollection],
   admin: {
     importMap: {
       baseDir: path.resolve(dirname),
