@@ -13,8 +13,7 @@ export interface Config {
   collections: {
     posts: Post;
     media: Media;
-    segments: Segment;
-    industries: Industry;
+    categories: Category;
     users: User;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -24,8 +23,7 @@ export interface Config {
   collectionsSelect: {
     posts: PostsSelect<false> | PostsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
-    segments: SegmentsSelect<false> | SegmentsSelect<true>;
-    industries: IndustriesSelect<false> | IndustriesSelect<true>;
+    categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -74,27 +72,16 @@ export interface UserAuthOperations {
 export interface Post {
   id: string;
   title?: string | null;
-  industry: string | Industry;
-  segment?: (string | null) | Segment;
+  category?: (string | null) | Category;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "industries".
+ * via the `definition` "categories".
  */
-export interface Industry {
-  id: string;
-  name: string;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "segments".
- */
-export interface Segment {
+export interface Category {
   id: string;
   name: string;
   updatedAt: string;
@@ -177,12 +164,8 @@ export interface PayloadLockedDocument {
         value: string | Media;
       } | null)
     | ({
-        relationTo: 'segments';
-        value: string | Segment;
-      } | null)
-    | ({
-        relationTo: 'industries';
-        value: string | Industry;
+        relationTo: 'categories';
+        value: string | Category;
       } | null)
     | ({
         relationTo: 'users';
@@ -236,8 +219,7 @@ export interface PayloadMigration {
  */
 export interface PostsSelect<T extends boolean = true> {
   title?: T;
-  industry?: T;
-  segment?: T;
+  category?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
@@ -295,18 +277,9 @@ export interface MediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "segments_select".
+ * via the `definition` "categories_select".
  */
-export interface SegmentsSelect<T extends boolean = true> {
-  name?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "industries_select".
- */
-export interface IndustriesSelect<T extends boolean = true> {
+export interface CategoriesSelect<T extends boolean = true> {
   name?: T;
   updatedAt?: T;
   createdAt?: T;

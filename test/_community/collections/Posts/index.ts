@@ -13,19 +13,12 @@ export const PostsCollection: CollectionConfig = {
       type: 'text',
     },
     {
-      name: 'industry',
+      name: 'category',
       type: 'relationship',
-      relationTo: 'industries',
-      label: 'Industry',
-      required: true,
-    },
-    {
-      name: 'segment',
-      type: 'relationship',
-      relationTo: 'segments',
+      relationTo: 'categories',
       required: true,
       admin: {
-        condition: (data) => !!data.industry,
+        condition: (data) => true,
       },
       label: 'Segment',
     },
