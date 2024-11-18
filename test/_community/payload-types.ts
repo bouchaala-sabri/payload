@@ -96,7 +96,6 @@ export interface Industry {
  */
 export interface Segment {
   id: string;
-  industry: string | Industry;
   name: string;
   updatedAt: string;
   createdAt: string;
@@ -299,7 +298,6 @@ export interface MediaSelect<T extends boolean = true> {
  * via the `definition` "segments_select".
  */
 export interface SegmentsSelect<T extends boolean = true> {
-  industry?: T;
   name?: T;
   updatedAt?: T;
   createdAt?: T;

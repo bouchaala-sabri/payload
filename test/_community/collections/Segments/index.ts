@@ -8,13 +8,5 @@ export const SegmentsCollection: CollectionConfig = {
   admin: {
     useAsTitle: 'name',
   },
-  fields: [
-    {
-      name: 'industry',
-      type: 'relationship',
-      required: true,
-      relationTo: 'industries',
-    },
-    { name: 'name', type: 'text', required: true },
-  ],
+  fields: [{ name: 'name', type: 'text', required: true }],
 }
